@@ -1,5 +1,4 @@
 // https://community.topcoder.com/stat?c=problem_statement&pm=15051
-
 fn gcd_rec(a: i32, b: i32) -> i32 {
     if a == b {
         a
@@ -26,7 +25,30 @@ fn gcd(a: i32, b: i32) -> i32 {
     gcd_iter(a, b)
 }
 
-fn euler_totient(n: i32) -> i32 {
+fn euler_totient_fast(mut n: i32) -> i32 {
+    let mut result = n;
+    let mut i = 2;
+
+    while i * i <= n {
+        if n % i == 0 {
+            result -= result / i;
+        }
+
+        while n % i == 0 {
+            n /= i;
+        }
+
+        i += 1;
+    }
+
+    if n > 1 {
+        result -= result / n;
+    }
+
+    result
+}
+
+fn euler_totient_slow(n: i32) -> i32 {
     let mut count = 0;
 
     for i in 1..n + 1 {
@@ -38,12 +60,16 @@ fn euler_totient(n: i32) -> i32 {
     count
 }
 
+fn euler_totient(n: i32) -> i32 {
+    euler_totient_fast(n)
+}
+
 const N: i32 = 1_000_000_007;
 
 fn find_value_naive(m: i32, n: i32) -> i32 {
     let mut sum = 0;
-    for x in 1..m+1 {
-        for r in 1..n+1 {
+    for x in 1..m + 1 {
+        for r in 1..n + 1 {
             sum += euler_totient(x.pow(r as u32));
         }
     }

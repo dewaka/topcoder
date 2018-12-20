@@ -1,5 +1,6 @@
 #![allow(dead_code)]
 
-mod function_game;
-mod get_accepted;
-mod modular_quadrant;
+pub mod function_game;
+pub mod get_accepted;
+pub mod make_two_consecutive;
+pub mod modular_quadrant;

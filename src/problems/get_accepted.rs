@@ -3,10 +3,9 @@
 fn is_positive(question: &str) -> bool {
     // If the count of "not" in question is even, then it should be positive. If
     // it is an odd number then it will be negative.
-    let words = question.split(" ").collect::<Vec<&str>>();
     let mut not_count = 0;
 
-    for w in words {
+    for w in question.split(" ") {
         if w == "not" {
             not_count += 1;
         }

@@ -6,3 +6,5 @@ pub mod get_accepted;
 pub mod make_two_consecutive;
 pub mod modular_quadrant;
 pub mod trees_and_brackets;
+pub mod building_strings;
+pub mod square_free_string;
